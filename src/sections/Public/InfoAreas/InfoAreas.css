@@ -1,0 +1,48 @@
+.container-info-areas {
+ width: 100%;
+ height: 20%;
+ display: flex;
+ align-items: center;
+ gap: 30px;
+ justify-content: space-between;
+ padding: 10px;
+}
+
+.section1-info-areas {
+ display: flex;
+ flex-direction: column; /* Cambia a column para pantallas más pequeñas */
+}
+
+.section1-info-areas h2 {
+ width: 100%; /* Ajusta el ancho al 100% para ocupar el espacio completo */
+ text-align: center;
+ color: green;
+ margin-bottom: 10px; /* Añade un margen inferior para separar del siguiente elemento */
+}
+
+.section2-info-areas h3 {
+ color: green;
+}
+
+.section-img-info-areas img {
+ width: 100%; /* Ajusta el ancho al 100% para ocupar el espacio completo */
+ max-width: 450px; /* Establece un ancho máximo para la imagen */
+ height: auto;
+}
+
+@media (max-width: 910px) {
+ .container-info-areas {
+   flex-direction: column; /* Cambia a column para pantallas más pequeñas */
+   align-items: flex-start; /* Ajusta la alineación en pantallas más pequeñas */
+   height: auto; /* Ajusta la altura automáticamente en pantallas más pequeñas */
+ }
+
+ .section1-info-areas h2 {
+   width: 100%; /* Ajusta el ancho al 100% para ocupar el espacio completo */
+ }
+
+ .section-img-info-areas img {
+   width: 100%; /* Ajusta el ancho al 100% para ocupar el espacio completo */
+   max-width: none; /* Elimina el ancho máximo para la imagen en pantallas más pequeñas */
+ }
+}

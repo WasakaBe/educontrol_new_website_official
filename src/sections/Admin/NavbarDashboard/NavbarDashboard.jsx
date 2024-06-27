@@ -1,0 +1,76 @@
+import { logo_cbta } from '../../../assets/images';
+import './NavbarDashboard.css';
+
+// eslint-disable-next-line react/prop-types
+export default function NavbarDashboard({ onButtonClick }) {
+
+
+
+
+  return (
+    <div className="navbar-dashboard">
+      <div className="sidebar">
+        <div className="sidebar-header">
+          <img src={logo_cbta} alt="CRM Logo" className="logo" />
+          <h3>EDU CONTROL</h3>
+        </div>
+        <ul className="menu">
+          <li className="menu-item" onClick={() => onButtonClick('dashboard')}>
+            <span>Dashboard</span>
+          </li>
+          <li className="menu">
+            <span className="menu-item">Perfil</span>
+          </li>
+          <li className="menu-item dropdown">
+            <span className="dropdown-toggle">Credenciales Escolares</span>
+            <ul className="dropdown-menu2">
+              <li className="dropdown-item2"><a href="#">Crear</a></li>
+              <li className="dropdown-item2"><a href="#">Visualizar</a></li>
+              <li className="dropdown-item2"><a href="#">Diseños de las Credenciales</a></li>
+            </ul>
+          </li>
+          <li className="menu-item dropdown">
+            <span className="dropdown-toggle">Horario Escolares</span>
+            <ul className="dropdown-menu2">
+              <li className="dropdown-item2"><a href="#">Asignar</a></li>
+              <li className="dropdown-item2"><a href="#">Visualizar</a></li>
+            </ul>
+          </li>
+          <li className="menu-item dropdown">
+            <span className="dropdown-toggle">Informacion Escolares</span>
+            <ul className="dropdown-menu2">
+              <li className="dropdown-item2"><a href="#">Alumnos</a></li>
+              <li className="dropdown-item2"><a href="#">Docentes</a></li>
+              <li className="dropdown-item2"><a href="#">Becas</a></li>
+              <li className="dropdown-item2"><a href="#">Inscripcion</a></li>
+            </ul>
+          </li>
+          <li className="menu-item dropdown">
+            <span className="dropdown-toggle">Diseño del sitio web</span>
+            <ul className="dropdown-menu2">
+              <li className="dropdown-item2"><a href="#">Carrusel</a></li>
+              <li className="dropdown-item2"><a href="#">Bienvenida</a></li>
+              <li className="dropdown-item2"><a href="#">Mision y Vision</a></li>
+              <li className="dropdown-item2"><a href="#">Actividades escolares</a></li>
+              <li className="dropdown-item2"><a href="#">Actividades culturales</a></li>
+              <li className="dropdown-item2"><a href="#">Sobre Nosotros</a></li>
+              <li className="dropdown-item2"><a href="#">Carreras Tecnicas</a></li>
+            </ul>
+          </li>
+          <li className="menu-item">
+            <span>Mensajes</span>
+          </li>
+          <li className="menu-item">
+            <span>Configuracion</span>
+          </li>
+          <li className="menu-item">
+            <span>Ayuda</span>
+          </li>
+          <li className="menu-item">
+            <span>Cerrar Sesion</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}

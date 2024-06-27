@@ -1,0 +1,172 @@
+/* Welcome.css */
+.welcome-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+  height: 100%;
+  margin-bottom: 2px;
+}
+
+.welcome-container.visible {
+  opacity: 1;
+}
+
+.welcome-image {
+  max-width: 50%;
+  padding: 30px;
+}
+
+.welcome-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transform: scale(1);
+  transition: transform 1s ease-out;
+}
+
+.welcome-container.visible .welcome-image img {
+  transform: scale(1.1);
+}
+
+.welcome-image1 {
+  max-width: 30%;
+  padding: 30px;
+}
+
+.welcome-image1 img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transform: scale(1);
+  transition: transform 1s ease-out;
+}
+
+.welcome-container.visible .welcome-image1 img {
+  transform: scale(1.1);
+}
+
+.welcome-text {
+  max-width: 600px;
+  padding: 20px;
+}
+
+.welcome-text h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  transform: translateX(-50px);
+  transition: transform 1s ease-out;
+}
+
+.welcome-container.visible .welcome-text h1 {
+  transform: translateX(0);
+}
+
+.welcome-text p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  transform: translateX(50px);
+  transition: transform 1s ease-out;
+}
+
+.welcome-container.visible .welcome-text p {
+  transform: translateX(0);
+}
+
+.discover-button {
+  padding: 10px 20px;
+  background-color: rgb(15, 199, 79);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.discover-button:hover {
+  background-color: rgb(5, 92, 53);
+}
+
+/* Disable animations for smaller screens */
+.no-animations .welcome-container,
+.no-animations .welcome-image img,
+.no-animations .welcome-text h1,
+.no-animations .welcome-text p {
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .welcome-container {
+    flex-direction: row;
+    text-align: center;
+    height: auto;
+    padding: 40px;
+  }
+  z
+
+  .welcome-image,
+  .welcome-text {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .welcome-image1 {
+    max-width: 40%;
+    padding: 1px;
+  }
+
+
+  .welcome-container {
+    transition: none;
+  }
+
+  .welcome-image img {
+    transition: none;
+  }
+
+  .welcome-text h1 {
+    transition: none;
+  }
+
+  .welcome-text p {
+    transition: none;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .welcome-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .discover-button {
+    font-size: 0.875rem;
+    padding: 8px 16px;
+  }
+
+  .welcome-container {
+    transition: none;
+  }
+
+  .welcome-image img {
+    transition: none;
+  }
+
+  .welcome-image1 img {
+    transition: none;
+  }
+
+  .welcome-text h1 {
+    transition: none;
+  }
+
+  .welcome-text p {
+    transition: none;
+  }
+}
