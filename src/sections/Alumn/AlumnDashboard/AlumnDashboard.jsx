@@ -1,7 +1,7 @@
-import './AdminDashboard.css';
+import './AlumnDashboard.css';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-export default function AdminDashboard() {
+export default function AlumnDashboard() {
   const location = useLocation();
   const { user2 } = location.state || {};
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -27,7 +27,7 @@ export default function AdminDashboard() {
   return (
     <div className='admin-container-dashboard'>
       <div className='admin-header'>
-        <h2>Dashboard Administrador</h2>
+        <h2>Dashboard Alumno</h2>
         <p>{formattedTime}</p>
       </div>
       <div className='admin-welcome'>

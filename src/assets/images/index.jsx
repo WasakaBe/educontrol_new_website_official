@@ -32,6 +32,11 @@ import logo_contabilidad from './cbta-Contabilidad.jpg'
 import logo_desarrollo from './cbta-Desarrollo.jpg'
 import logo_ofimatica from './cbta-Ofimática.jpg'
 import logo_programacion from './cbta-Programación.jpg'
+
+//imagenes de las credenciaeles escolares
+import fondoazul from './fondoazul.jpg'
+import logoeducacion from './logo_educacion.png'
+import mujer from './exampleG6.jpg'
 export{
  logo_cbta,
  panel_uno_cbta,
@@ -63,4 +68,8 @@ export{
  logo_desarrollo,
  logo_ofimatica,
  logo_programacion,
+
+ fondoazul,
+ logoeducacion,
+ mujer,
 }

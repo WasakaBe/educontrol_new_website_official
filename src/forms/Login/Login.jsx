@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { alumnos_honores } from '../../assets/images';
 import './Login.css';
 import { apiUrl } from '../../constants/Api';
 import { useNavigate } from 'react-router-dom';
-
+import { AuthContext } from '../../Auto/Auth';
 // eslint-disable-next-line react/prop-types
 export default function Login({ onClose }) {
   const history = useNavigate();
+  const { login } = useContext(AuthContext);
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -67,14 +68,16 @@ export default function Login({ onClose }) {
         const data = await response.json();
         if (response.status === 200 && data.tbl_users) {
           const user = data.tbl_users;
+          const user2 = data.tbl_users.nombre_usuario;
           
           if (user.pwd_usuario === password) {
+            login(user); 
             if (user.idRol === 1) {
               toast.success(`Bienvenido administrador ${user.nombre_usuario}`);
-              //history(`/Administration/${ user.nombre_usuario}`);
-              history(`/Administration/${user.nombre_usuario}`, { state: { username: user.nombre_usuario } });
+              history(`/Administration/${user.nombre_usuario}`, { state: { user2 }});
             } else if (user.idRol === 2) {
               toast.success(`Bienvenido alumno ${user.nombre_usuario}`);
+              history(`/Alumn/${user.nombre_usuario}`, { state: { user2 }});
             } else if (user.idRol === 3) {
               toast.success(`Bienvenido docente ${user.nombre_usuario}`);
             } else if (user.idRol === 4) {
@@ -115,45 +118,44 @@ export default function Login({ onClose }) {
         </div>
         <div className="right-panel">
           <h2>Iniciar Sesión</h2>
-          {!emailSubmitted ? (
-            <form onSubmit={handleEmailSubmit}>
-              <div className="input-container">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="example@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={emailError ? 'error' : email && 'success'}
-                  required
-                />
-                {emailError && <p className="error-text">{emailError}</p>}
-                <button type="submit" className="login-button">Siguiente</button>
-              </div>
-            </form>
-          ) : (
-            <form onSubmit={handlePasswordSubmit}>
-              <div className="input-container">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className={passwordError ? 'error' : password && 'success'}
-                  required
-                />
-                {passwordError && <p className="error-text">{passwordError}</p>}
-                <div className='buttons'>
-                  <button type="button" className="back-button" onClick={handleBackClick}>Atrás</button>
-                  <button type="submit" className="login-button">Acceder</button>
-                </div>
-                <a href='/' className='crearcuenta'>Olvidaste tu password?</a>
-              </div>
-            </form>
-          )}
+          {emailSubmitted ? 
+                       <form onSubmit={handlePasswordSubmit}>
+                         <div className="input-container">
+                           <label htmlFor="password">Password</label>
+                           <input
+                             type="password"
+                             id="password"
+                             placeholder="Password"
+                             value={password}
+                             onChange={(e) => setPassword(e.target.value)}
+                             className={passwordError ? 'error' : password && 'success'}
+                             required
+                           />
+                           {passwordError && <p className="error-text">{passwordError}</p>}
+                           <div className='buttons'>
+                             <button type="button" className="back-button" onClick={handleBackClick}>Atrás</button>
+                             <button type="submit" className="login-button">Acceder</button>
+                           </div>
+                           <a href='/' className='crearcuenta'>Olvidaste tu password?</a>
+                         </div>
+                       </form>
+                      : 
+                       <form onSubmit={handleEmailSubmit}>
+                         <div className="input-container">
+                           <label htmlFor="email">Email</label>
+                           <input
+                             type="email"
+                             id="email"
+                             placeholder="example@email.com"
+                             value={email}
+                             onChange={(e) => setEmail(e.target.value)}
+                             className={emailError ? 'error' : email && 'success'}
+                             required
+                           />
+                           {emailError && <p className="error-text">{emailError}</p>}
+                           <button type="submit" className="login-button">Siguiente</button>
+                         </div>
+                       </form>}
           <a href='/' className='crearcuenta'>Crear Cuenta</a>
           <button onClick={onClose} className="close-button">Cerrar</button>
         </div>

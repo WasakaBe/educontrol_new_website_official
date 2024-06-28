@@ -16,8 +16,8 @@
 }
 
 .welcome-image {
-  max-width: 50%;
-  padding: 30px;
+  max-width: 40%;
+  padding: 40px;
 }
 
 .welcome-image img {
@@ -107,7 +107,6 @@
     height: auto;
     padding: 40px;
   }
-  z
 
   .welcome-image,
   .welcome-text {
@@ -119,7 +118,6 @@
     max-width: 40%;
     padding: 1px;
   }
-
 
   .welcome-container {
     transition: none;
@@ -169,4 +167,54 @@
   .welcome-text p {
     transition: none;
   }
+}
+
+/* Styles for modals */
+.modal4 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal-content4 {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.modal-content4 h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content4 p {
+  margin-bottom: 20px;
+}
+
+.close-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #0069d9;
 }

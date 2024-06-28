@@ -6,14 +6,14 @@
 }
 .sidebar {
  width: 100%;
- background-color: #fff;
+ background-color:  rgba(11, 52, 11, 0.742);
  border-right: 1px solid #eaeaea;
 }
 .sidebar-header {
  display: flex;
+ background-color: rgb(11, 52, 11);
  align-items: center;
  padding: 20px;
- background-color: #343a40;
  color: #fff;
 }
 .logo {
@@ -28,7 +28,7 @@
 }
 .menu-item {
  padding: 10px 15px;
- color: #333;
+ color: #fffefe;
  cursor: pointer;
  position: relative; 
  display: block;
