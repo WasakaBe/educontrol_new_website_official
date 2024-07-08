@@ -19,23 +19,23 @@ export default function Navbar() {
             ☰
           </button>
           <ul className="navbar-menu">
-            <li className="navbar-item"><a href="#">Inicio</a></li>
-            <li className="navbar-item"><a href="#Acerca">Acerca</a></li>
+            <li className="navbar-item"><a href="/">Inicio</a></li>
+            <li className="navbar-item"><a href="/#Acerca">Acerca</a></li>
             <li className="navbar-item dropdown">
               <a href="#" className="dropdown-toggle">Servicios</a>
               <ul className="dropdown-menu">
-                <li className="dropdown-item"><a href="#Inscripcion">Inscripción</a></li>
-                <li className="dropdown-item"><a href="#">Reinscripción</a></li>
+                <li className="dropdown-item"><a href="/#Inscripcion">Inscripción</a></li>
+                <li className="dropdown-item"><a href="/#">Reinscripción</a></li>
                 <li className="dropdown-item dropdown-submenu">
                   <a href="#">Escolares</a>
                   <ul className="dropdown-menu">
-                    <li className="dropdown-item"><a href="#">Becas</a></li>
-                    <li className="dropdown-item"><a href="#">Titulación</a></li>
+                    <li className="dropdown-item"><a href="/#">Becas</a></li>
+                    <li className="dropdown-item"><a href="/#">Titulación</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li className="navbar-item"><a href="#Contact">Contacto</a></li>
+            <li className="navbar-item"><a href="/#Contact">Contacto</a></li>
             <li className="navbar-item">
               <a href="#" onClick={() => setShowLoginModal(true)}>Iniciar Sesión</a>
             </li>

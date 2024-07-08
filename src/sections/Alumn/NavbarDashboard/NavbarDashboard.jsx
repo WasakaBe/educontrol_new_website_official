@@ -24,20 +24,21 @@ export default function NavbarDashboard({ onButtonClick }) {
           <li className="menu-item" onClick={() => onButtonClick('dashboardalumn')}>
             <span>Dashboard</span>
           </li>
-          <li className="menu">
-            <span className="menu-item" onClick={() => onButtonClick('profiledashboardalumn')}>Perfil</span>
-          </li>
           <li className="menu-item dropdown">
             <span className="dropdown-toggle">Informacion</span>
             <ul className="dropdown-menu2">
-              <li className="dropdown-item2"onClick={() => onButtonClick('createcredential')}><a href="#">Escolar</a></li>
-              <li className="dropdown-item2"onClick={() => onButtonClick('createcredential')}><a href="#">Familiar</a></li>
+            <li className="menu">
+            <span className="menu-item" onClick={() => onButtonClick('profiledashboardalumn')}>Perfil</span>
+          </li>
+              <li className="dropdown-item2"onClick={() => onButtonClick('escolar')}><a href="#">Escolar</a></li>
+              <li className="dropdown-item2"onClick={() => onButtonClick('personal')}><a href="#">Personal</a></li>
+              <li className="dropdown-item2"onClick={() => onButtonClick('familiar')}><a href="#">Familiar</a></li>
             </ul>
           </li>
           <li className="menu-item dropdown">
             <span className="dropdown-toggle">Credencial</span>
             <ul className="dropdown-menu2">
-              <li className="dropdown-item2"onClick={() => onButtonClick('createcredential')}><a href="#">Virtual</a></li>
+              <li className="dropdown-item2"onClick={() => onButtonClick('viewcredentialsalumn')}><a href="#">Virtual</a></li>
               <li className="dropdown-item2"onClick={() => onButtonClick('createcredential')}><a href="#">Solicitar</a></li>
             </ul>
           </li>

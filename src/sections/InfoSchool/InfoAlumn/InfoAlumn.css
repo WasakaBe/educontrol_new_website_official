@@ -1,78 +1,130 @@
-.info-alumn-container {
- width: 100%;
- margin: 0 auto;
- padding: 20px;
- background-color: #fff;
- border-radius: 8px;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- overflow-x: scroll;
+.container-admin-table-alumns {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 40px;
 }
 
-.info-alumn-container h2 {
- text-align: center;
- margin-bottom: 20px;
+.alumn-table {
+  width: 100%;
+  padding: 20px;
+  border-collapse: collapse;
 }
 
-.search-form {
- display: flex;
- justify-content: center;
- margin-bottom: 20px;
+.alumn-table th,
+.alumn-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-.search-form input {
- padding: 10px;
- border: 1px solid #ccc;
- border-radius: 5px;
- margin-right: 10px;
-}
-
-.search-form button {
- padding: 10px 20px;
- border: none;
- background-color: #007bff;
- color: #fff;
- border-radius: 5px;
- cursor: pointer;
-}
-
-.search-form button:hover {
- background-color: #0069d9;
-}
-
-.alumnos-table {
- width: 100%;
- border-collapse: collapse;
- margin-bottom: 20px;
-}
-
-.alumnos-table th, .alumnos-table td {
- border: 1px solid #ddd;
- padding: 8px;
- text-align: left;
-}
-
-.alumnos-table th {
- background-color: #f2f2f2;
+.alumn-table th {
+  background-color: #f2f2f2;
+  text-align: left;
 }
 
 .pagination {
- display: flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.page-button {
- padding: 10px;
- margin: 0 5px;
- border: 1px solid #ddd;
- background-color: #f2f2f2;
- cursor: pointer;
+.pagination li {
+  list-style-type: none;
+  margin: 0 5px;
 }
 
-.page-button.active {
- background-color: #007bff;
- color: #fff;
+.pagination li a {
+  text-decoration: none;
+  color: #000;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
 }
 
-.page-button:hover {
- background-color: #ddd;
+.pagination li.active a {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+.search-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-container input,
+.search-container select,
+.search-container button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-container button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+
+.modal-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-info {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-info {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-info:hover,
+.close-info:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 20px; /* Espacio entre los elementos */
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.info-value {
+  color: #555;
 }

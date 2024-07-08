@@ -2,7 +2,8 @@ import {useState,useContext,useEffect} from 'react'
 import {AuthContext} from '../../Auto/Auth'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { AlumnDashboard, NavbarDashboard, ProfileAlumnDashboard } from '../../sections/Alumn';
+import { AlumnDashboard, CredentialsAlumn, Escolar, Familiar, NavbarDashboard, Personal, ProfileAlumnDashboard } from '../../sections/Alumn';
+import { InfoAlumn } from '../../sections/InfoSchool';
 export default function Alumn() {
   const [currentPanel, setCurrentPanel] = useState('dashboardalumn');
   const { isAuthenticated, user } = useContext(AuthContext);
@@ -23,6 +24,11 @@ export default function Alumn() {
       <NavbarDashboard onButtonClick={handleButtonClick} />
       {currentPanel === 'dashboardalumn' && <AlumnDashboard/>}
       {currentPanel === 'profiledashboardalumn' && <ProfileAlumnDashboard/>}
+      {currentPanel === 'infoalumn' && <InfoAlumn/>}
+      {currentPanel === 'viewcredentialsalumn' && <CredentialsAlumn/>}
+      {currentPanel === 'escolar' && <Escolar/>}
+      {currentPanel === 'personal' && <Personal/>}
+      {currentPanel === 'familiar' && <Familiar/>}
     </div>
   )
 }

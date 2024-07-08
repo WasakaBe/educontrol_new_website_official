@@ -6,6 +6,9 @@ import './Login.css';
 import { apiUrl } from '../../constants/Api';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Auto/Auth';
+import Register from '../Register/Register';
+import PasswordReset from '../ForgoutPwd/ForgoutPwd';
+
 // eslint-disable-next-line react/prop-types
 export default function Login({ onClose }) {
   const history = useNavigate();
@@ -15,6 +18,8 @@ export default function Login({ onClose }) {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [showRegister, setShowRegister] = useState(false); // Estado para mostrar la modal de registro
+  const [showPasswordReset, setShowPasswordReset] = useState(false); // Estado para mostrar la modal de restablecimiento de contraseña
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -69,9 +74,9 @@ export default function Login({ onClose }) {
         if (response.status === 200 && data.tbl_users) {
           const user = data.tbl_users;
           const user2 = data.tbl_users.nombre_usuario;
-          
+
           if (user.pwd_usuario === password) {
-            login(user); 
+            login(user);
             if (user.idRol === 1) {
               toast.success(`Bienvenido administrador ${user.nombre_usuario}`);
               history(`/Administration/${user.nombre_usuario}`, { state: { user2 }});
@@ -82,12 +87,10 @@ export default function Login({ onClose }) {
               toast.success(`Bienvenido docente ${user.nombre_usuario}`);
             } else if (user.idRol === 4) {
               toast.success(`Bienvenido familiar ${user.nombre_usuario}`);
-            }  
-            else {
+            } else {
               toast.success(`Bienvenido ${user.nombre_usuario}`);
             }
             setPasswordError('');
-            // Aquí puedes agregar la lógica de redirección según el rol del usuario
           } else {
             toast.error('Datos no coinciden');
             setPasswordError('Datos no coinciden');
@@ -110,6 +113,14 @@ export default function Login({ onClose }) {
     setPasswordError('');
   };
 
+  const handleRegisterClick = () => {
+    setShowRegister(true);
+  };
+
+  const handlePasswordResetClick = () => {
+    setShowPasswordReset(true);
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -119,47 +130,49 @@ export default function Login({ onClose }) {
         <div className="right-panel">
           <h2>Iniciar Sesión</h2>
           {emailSubmitted ? 
-                       <form onSubmit={handlePasswordSubmit}>
-                         <div className="input-container">
-                           <label htmlFor="password">Password</label>
-                           <input
-                             type="password"
-                             id="password"
-                             placeholder="Password"
-                             value={password}
-                             onChange={(e) => setPassword(e.target.value)}
-                             className={passwordError ? 'error' : password && 'success'}
-                             required
-                           />
-                           {passwordError && <p className="error-text">{passwordError}</p>}
-                           <div className='buttons'>
-                             <button type="button" className="back-button" onClick={handleBackClick}>Atrás</button>
-                             <button type="submit" className="login-button">Acceder</button>
-                           </div>
-                           <a href='/' className='crearcuenta'>Olvidaste tu password?</a>
-                         </div>
-                       </form>
-                      : 
-                       <form onSubmit={handleEmailSubmit}>
-                         <div className="input-container">
-                           <label htmlFor="email">Email</label>
-                           <input
-                             type="email"
-                             id="email"
-                             placeholder="example@email.com"
-                             value={email}
-                             onChange={(e) => setEmail(e.target.value)}
-                             className={emailError ? 'error' : email && 'success'}
-                             required
-                           />
-                           {emailError && <p className="error-text">{emailError}</p>}
-                           <button type="submit" className="login-button">Siguiente</button>
-                         </div>
-                       </form>}
-          <a href='/' className='crearcuenta'>Crear Cuenta</a>
+            <form onSubmit={handlePasswordSubmit}>
+              <div className="input-container">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className={passwordError ? 'error' : password && 'success'}
+                  required
+                />
+                {passwordError && <p className="error-text">{passwordError}</p>}
+                <div className='buttons'>
+                  <button type="button" className="back-button" onClick={handleBackClick}>Atrás</button>
+                  <button type="submit" className="login-button">Acceder</button>
+                </div>
+                <a href='#' className='crearcuenta' onClick={handlePasswordResetClick}>Olvidaste tu password?</a>
+              </div>
+            </form>
+            : 
+            <form onSubmit={handleEmailSubmit}>
+              <div className="input-container">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="example@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={emailError ? 'error' : email && 'success'}
+                  required
+                />
+                {emailError && <p className="error-text">{emailError}</p>}
+                <button type="submit" className="login-button">Siguiente</button>
+              </div>
+            </form>}
+          <a href='#' className='crearcuenta' onClick={handleRegisterClick}>Crear Cuenta</a>
           <button onClick={onClose} className="close-button">Cerrar</button>
         </div>
       </div>
+      {showRegister && <Register onClose={() => setShowRegister(false)} />} {/* Muestra la modal de registro */}
+      {showPasswordReset && <PasswordReset onClose={() => setShowPasswordReset(false)} />} {/* Muestra la modal de restablecimiento de contraseña */}
       <ToastContainer />
     </div>
   );

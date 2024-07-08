@@ -1,6 +1,6 @@
 .navbar-dashboard {
  display: flex;
- height: 100vh;
+ height: 100% auto !important;
  width: 20%;
  background-color: #f8f9fa; 
 }
@@ -31,12 +31,15 @@
  color: #fffefe;
  cursor: pointer;
  position: relative; 
- display: block;
- justify-content: space-between; /* Espacio entre el texto y el icono */
+  display: block;  /* Cambiado a flex para una mejor alineación */
  align-items: center;
+ gap: 10px;  /* Espacio entre el icono y el texto */
 }
 .menu-item:hover {
  background-color: #b7b7b8c1;
+}
+.menu-item img{
+ width: 40px;
 }
 .dropdown-toggle::after {
  content: '▼'; /* Flecha indicando el dropdown */

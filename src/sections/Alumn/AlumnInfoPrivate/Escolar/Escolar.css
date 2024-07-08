@@ -1,0 +1,78 @@
+.escolar-container {
+ font-family: Arial, sans-serif;
+ padding: 20px;
+ max-width: 800px;
+ margin: 0 auto;
+ background-color: #f9f9f9;
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.escolar-container h1 {
+ text-align: center;
+ color: #333;
+}
+
+.alumno-info {
+ margin-top: 20px;
+}
+
+.alumno-info h2 {
+ color: #666;
+ margin-bottom: 15px;
+}
+
+.alumno-info table {
+ width: 100%;
+ border-collapse: collapse;
+}
+
+.alumno-info th, td {
+ padding: 10px;
+ border-bottom: 1px solid #ddd;
+}
+
+.alumno-info th {
+ text-align: left;
+ background-color: #f2f2f2;
+ color: #333;
+}
+
+.alumno-info td {
+ background-color: #fff;
+}
+
+.loading-container {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
+ height: 100vh;
+}
+
+.loading-spinner {
+ border: 16px solid #f3f3f3; /* Light grey */
+ border-top: 16px solid #3498db; /* Blue */
+ border-radius: 50%;
+ width: 120px;
+ height: 120px;
+ animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+ margin-top: 20px;
+ font-size: 18px;
+ color: #888;
+}
+
+.error {
+ text-align: center;
+ font-size: 18px;
+ color: #888;
+}

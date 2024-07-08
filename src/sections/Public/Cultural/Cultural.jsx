@@ -1,9 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { logo_basquetboll, logo_chess, logo_correr, logo_danza, logo_dibujar, logo_futbol, logo_musica, logo_voleibol } from '../../../assets/images';
+import { Modal } from '../../../components';
 import './Cultural.css';
 
 export default function Cultural() {
   const hexRefs = useRef([]);
+  const [modalVisible, setModalVisible] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,25 +24,30 @@ export default function Cultural() {
     );
 
     hexRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
+      if (ref) {
+        observer.observe(ref);
+      }
     });
 
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       hexRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
+        if (ref) {
+          observer.unobserve(ref);
+        }
       });
     };
   }, []);
 
   const hexagons = [
-    { src: logo_basquetboll, alt: 'Basketball', className: 'hex-animation-1' },
-    { src: logo_danza, alt: 'Dance', className: 'hex-animation-2' },
-    { src: logo_voleibol, alt: 'Volleyball', className: 'hex-animation-3' },
-    { src: logo_musica, alt: 'Music', className: 'hex-animation-4' },
-    { src: logo_correr, alt: 'Running', className: 'hex-animation-5' },
-    { src: logo_futbol, alt: 'Soccer', className: 'hex-animation-6' },
-    { src: logo_dibujar, alt: 'Writing', className: 'hex-animation-7' },
-    { src: logo_chess, alt: 'Chess', className: 'hex-animation-8' },
+    { src: logo_basquetboll, alt: 'Basketball', className: 'hex-animation-1', modalContent: 'Información sobre Basketball' },
+    { src: logo_danza, alt: 'Dance', className: 'hex-animation-2', modalContent: 'Información sobre Dance' },
+    { src: logo_voleibol, alt: 'Volleyball', className: 'hex-animation-3', modalContent: 'Información sobre Volleyball' },
+    { src: logo_musica, alt: 'Music', className: 'hex-animation-4', modalContent: 'Información sobre Music' },
+    { src: logo_correr, alt: 'Running', className: 'hex-animation-5', modalContent: 'Información sobre Running' },
+    { src: logo_futbol, alt: 'Soccer', className: 'hex-animation-6', modalContent: 'Información sobre Soccer' },
+    { src: logo_dibujar, alt: 'Writing', className: 'hex-animation-7', modalContent: 'Información sobre Writing' },
+    { src: logo_chess, alt: 'Chess', className: 'hex-animation-8', modalContent: 'Información sobre Chess' },
   ];
 
   return (
@@ -55,6 +62,7 @@ export default function Cultural() {
             key={index}
             className={`hex ${hex.className}`}
             ref={(el) => (hexRefs.current[index] = el)}
+            onClick={() => setModalVisible(index)}
           >
             <div className="hex-inner">
               <div className="hex-content">
@@ -64,6 +72,16 @@ export default function Cultural() {
           </div>
         ))}
       </div>
+      {hexagons.map((hex, index) => (
+        <Modal
+          key={index}
+          show={modalVisible === index}
+          onClose={() => setModalVisible(null)}
+          title={hex.alt}
+        >
+          <p>{hex.modalContent}</p>
+        </Modal>
+      ))}
     </div>
   );
 }
